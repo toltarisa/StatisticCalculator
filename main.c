@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+
 int findMode(int arr[],int size);
 int findMedian(int arr[],int size);
 int calcGeometricAvr(int arr[], double size);
@@ -13,7 +14,7 @@ int calcAbsoluteDeflection(int arr[], int size);
 int calcMassVariance(int arr[], int size);
 int calcStandarDeflection(int arr[],int size);
 int switchCase(int arr[], int size);
-
+int abs(int value);
 
 int main() {
 	//kulanýcýdan dizi boyutunu al
@@ -73,6 +74,10 @@ int switchCase(int arr[], int size){
 		case 9:calcMassVariance(arr, size);break;
 		case 10:calcStandarDeflection(arr, size);break;
 	}
+}
+
+int abs(int value){
+	return value * ( (value<0) * (-1) + (value>0));
 }
 
 int findMode(int arr[], int size)
@@ -168,7 +173,8 @@ calcAbsoluteDeflection(int arr[], int size){
 	for(i = 0; i< size; i++){
 		sum += arr[i]; 
 		average = sum / size;
-		sumOfDiff = sumOfDiff + abs(arr[i] - average);
+		int diff = arr[i] - average;
+		sumOfDiff = sumOfDiff + abs(diff);
 	}
 	deflection = sumOfDiff / size;
 	printf("Mutlak Sapma : %d\n",deflection);
